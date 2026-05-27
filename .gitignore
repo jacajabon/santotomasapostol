@@ -1,0 +1,13 @@
+# System Files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Backup Files
+*.bak
+**/*.bak
+
+# Temporary Virtual Environments
+venv/
+env/
+.venv/
