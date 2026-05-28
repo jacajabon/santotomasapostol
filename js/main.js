@@ -239,6 +239,71 @@ document.addEventListener('DOMContentLoaded', () => {
       return propDesc ? propDesc.value : null;
     }
 
+    // Función de sanitización de HTML para evitar vulnerabilidades XSS
+    function sanitizeHTML(htmlString) {
+      if (!htmlString) return document.createDocumentFragment();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlString, 'text/html');
+      
+      const allowedTags = ['p', 'strong', 'em', 'ul', 'ol', 'li', 'br', 'span', 'b', 'i'];
+      
+      function sanitizeNode(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          return node.cloneNode(true);
+        }
+        
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          const tagName = node.tagName.toLowerCase();
+          
+          if (!allowedTags.includes(tagName)) {
+            const fragment = document.createDocumentFragment();
+            node.childNodes.forEach(child => {
+              fragment.appendChild(sanitizeNode(child));
+            });
+            return fragment;
+          }
+          
+          const cleanEl = document.createElement(tagName);
+          
+          if (node.hasAttribute('style')) {
+            const styleVal = node.getAttribute('style');
+            const cleanStyles = [];
+            const parts = styleVal.split(';');
+            parts.forEach(part => {
+              const colonIndex = part.indexOf(':');
+              if (colonIndex !== -1) {
+                const prop = part.substring(0, colonIndex).trim().toLowerCase();
+                const val = part.substring(colonIndex + 1).trim().toLowerCase();
+                if (['color', 'font-weight', 'margin-top'].includes(prop)) {
+                  if (!val.includes('javascript') && !val.includes('url') && !val.includes('expression')) {
+                    cleanStyles.push(`${prop}: ${val}`);
+                  }
+                }
+              }
+            });
+            if (cleanStyles.length > 0) {
+              cleanEl.setAttribute('style', cleanStyles.join('; '));
+            }
+          }
+          
+          node.childNodes.forEach(child => {
+            cleanEl.appendChild(sanitizeNode(child));
+          });
+          
+          return cleanEl;
+        }
+        
+        return document.createTextNode('');
+      }
+      
+      const cleanFragment = document.createDocumentFragment();
+      doc.body.childNodes.forEach(child => {
+        cleanFragment.appendChild(sanitizeNode(child));
+      });
+      
+      return cleanFragment;
+    }
+
     // 1. Traducir textos simples
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -253,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const key = el.getAttribute('data-i18n-html');
       const val = getSafeTranslation(lang, key);
       if (val !== null && val !== undefined) {
-        el.innerHTML = val;
+        el.replaceChildren(sanitizeHTML(val));
       }
     });
 
