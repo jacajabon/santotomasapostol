@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* --- Lightbox para imágenes --- */
+  /* --- Lightbox para imágenes y videos --- */
   const galeriaItems = document.querySelectorAll('.galeria-item');
   
   // Crear el elemento lightbox si no existe
@@ -137,8 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.className = 'lightbox';
     lightbox.innerHTML = `
       <div class="lightbox-content">
-        <button class="lightbox-close" aria-label="Cerrar">&times;</button>
-        <img src="" alt="Imagen ampliada">
+        <button class="lightbox-close" data-i18n-aria-label="lightbox_close" aria-label="Cerrar">&times;</button>
+        <img src="" alt="Imagen ampliada" style="display: none; max-width: 100%; max-height: 75vh; border-radius: var(--radius-lg); object-fit: contain; border: 3px solid rgba(255, 255, 255, 0.2);">
+        <video src="" controls style="display: none; max-width: 100%; max-height: 75vh; border-radius: var(--radius-lg); border: 3px solid rgba(255, 255, 255, 0.2); outline: none;"></video>
         <div class="lightbox-caption"></div>
       </div>
     `;
@@ -146,20 +147,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const lightboxImg = lightbox.querySelector('img');
+  const lightboxVideo = lightbox.querySelector('video');
   const lightboxCaption = lightbox.querySelector('.lightbox-caption');
   const lightboxClose = lightbox.querySelector('.lightbox-close');
 
   galeriaItems.forEach(item => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
+      const video = item.querySelector('video');
       const caption = item.querySelector('.galeria-caption');
       
+      // Resetear estado
+      lightboxImg.style.display = 'none';
+      lightboxVideo.style.display = 'none';
+      try {
+        lightboxVideo.pause();
+      } catch(e) {}
+      lightboxVideo.src = '';
+
       if (img) {
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
+        lightboxImg.style.display = 'block';
         lightboxCaption.textContent = caption ? caption.textContent : '';
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden'; // Bloquear scroll de la página
+      } else if (video) {
+        lightboxVideo.src = video.src;
+        lightboxVideo.style.display = 'block';
+        lightboxCaption.textContent = caption ? caption.textContent : '';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Bloquear scroll de la página
+        lightboxVideo.play().catch(err => console.log('Autoplay prevented', err));
       }
     });
   });
@@ -167,6 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeLightbox() {
     lightbox.classList.remove('active');
     document.body.style.overflow = ''; // Restaurar scroll
+    try {
+      lightboxVideo.pause();
+    } catch(e) {}
+    lightboxVideo.src = '';
   }
 
   if (lightboxClose) {
@@ -174,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   lightbox.addEventListener('click', (e) => {
-    // Cerrar si se hace clic fuera de la imagen
+    // Cerrar si se hace clic fuera del contenido principal
     if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
       closeLightbox();
     }
@@ -216,5 +239,102 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  /* --- Sistema de Traducción (i18n) --- */
+  function translatePage(lang) {
+    if (!window.translations) return;
+
+    // 1. Traducir textos simples
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (window.translations[lang] && window.translations[lang][key]) {
+        el.textContent = window.translations[lang][key];
+      }
+    });
+
+    // 2. Traducir bloques de HTML
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (window.translations[lang] && window.translations[lang][key]) {
+        el.innerHTML = window.translations[lang][key];
+      }
+    });
+
+    // 3. Traducir atributos alt
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      const key = el.getAttribute('data-i18n-alt');
+      if (window.translations[lang] && window.translations[lang][key]) {
+        el.setAttribute('alt', window.translations[lang][key]);
+      }
+    });
+
+    // 4. Traducir atributos aria-label
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria-label');
+      if (window.translations[lang] && window.translations[lang][key]) {
+        el.setAttribute('aria-label', window.translations[lang][key]);
+      }
+    });
+
+    // 5. Traducir atributos href (ej. enlace de WhatsApp)
+    document.querySelectorAll('[data-i18n-href]').forEach(el => {
+      const key = el.getAttribute('data-i18n-href');
+      if (window.translations[lang] && window.translations[lang][key]) {
+        el.setAttribute('href', window.translations[lang][key]);
+      }
+    });
+
+    // 6. Traducir atributos content (ej. meta de descripción)
+    document.querySelectorAll('[data-i18n-content]').forEach(el => {
+      const key = el.getAttribute('data-i18n-content');
+      if (window.translations[lang] && window.translations[lang][key]) {
+        el.setAttribute('content', window.translations[lang][key]);
+      }
+    });
+
+    // 7. Actualizar el atributo lang del HTML
+    document.documentElement.setAttribute('lang', lang);
+
+    // 8. Sincronizar botones activos del selector de idioma
+    document.querySelectorAll('.lang-selector .lang-btn').forEach(btn => {
+      if (btn.getAttribute('data-lang') === lang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // 9. Recalcular alturas de acordeones que estén abiertos
+    document.querySelectorAll('.accordion-item.active .accordion-content').forEach(content => {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    });
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem('parroquia_lang', lang);
+    translatePage(lang);
+  }
+
+  function initLanguage() {
+    // Intentar leer de localStorage
+    let savedLang = localStorage.getItem('parroquia_lang');
+    if (!savedLang) {
+      // Detección automática del navegador
+      const browserLang = navigator.language || navigator.userLanguage || 'es';
+      savedLang = browserLang.startsWith('en') ? 'en' : 'es';
+    }
+    translatePage(savedLang);
+
+    // Añadir listeners a los selectores de idioma
+    document.querySelectorAll('.lang-selector .lang-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const selectedLang = e.currentTarget.getAttribute('data-lang');
+        setLanguage(selectedLang);
+      });
+    });
+  }
+
+  // Inicializar traducciones
+  initLanguage();
 });
 

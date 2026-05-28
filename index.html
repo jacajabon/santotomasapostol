@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parroquia Santo Tomás Apóstol</title>
-  <meta name="description" content="Sitio oficial de la Parroquia Santo Tomás Apóstol en Santo Tomás Milpas Altas. Información de misas, sacramentos y nuestro proyecto de reconstrucción.">
+  <title data-i18n="meta_title">Parroquia Santo Tomás Apóstol</title>
+  <meta name="description" data-i18n-content="meta_desc" content="Sitio oficial de la Parroquia Santo Tomás Apóstol en Santo Tomás Milpas Altas. Información de misas, sacramentos y nuestro proyecto de reconstrucción.">
   
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,14 +24,21 @@
     <div class="drawer-scroller">
       <div class="drawer-spacer"></div>
       <nav class="drawer-sheet" tabindex="-1">
-        <img src="assets/logos/IMG_8030.PNG" alt="Logo Parroquia" style="height: 80px; object-fit: contain; margin-bottom: 1rem;">
-        <a href="#inicio">Inicio</a>
-        <a href="#reconstruccion">Proyecto Reconstrucción</a>
-        <a href="#horarios">Horario de Misas</a>
-        <a href="#quienes-somos">Quiénes Somos</a>
-        <a href="#sacramentos">Sacramentos</a>
-        <a href="#comunidades">Grupos y Comunidades</a>
-        <a href="#contacto">Contacto</a>
+        <img src="assets/logos/IMG_8030.PNG" data-i18n-alt="logo_alt_general" alt="Logo Parroquia" style="height: 80px; object-fit: contain; margin-bottom: 1rem;">
+        
+        <div class="lang-selector drawer-lang-selector">
+          <button class="lang-btn active" data-lang="es">ES</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <a href="#inicio" data-i18n="nav_home">Inicio</a>
+        <a href="#reconstruccion" data-i18n="nav_reconstruction">Proyecto Reconstrucción</a>
+        <a href="#horarios" data-i18n="nav_masses">Horario de Misas</a>
+        <a href="#quienes-somos" data-i18n="nav_about">Quiénes Somos</a>
+        <a href="#sacramentos" data-i18n="nav_sacraments">Sacramentos</a>
+        <a href="#comunidades" data-i18n="nav_communities">Grupos y Comunidades</a>
+        <a href="#contacto" data-i18n="nav_contact">Contacto</a>
       </nav>
     </div>
   </div>
@@ -41,22 +48,30 @@
     <div class="container nav-container">
       <a href="#inicio" class="logo">
         <!-- Logo versión azul marino -->
-        <img src="assets/logos/IMG_8030.PNG" alt="Logo Parroquia Santo Tomás Apóstol">
+        <img src="assets/logos/IMG_8030.PNG" data-i18n-alt="logo_alt" alt="Logo Parroquia Santo Tomás Apóstol">
       </a>
       
       <nav class="desktop-nav">
-        <a href="#inicio">Inicio</a>
-        <a href="#horarios">Misas</a>
-        <a href="#quienes-somos">Nosotros</a>
-        <a href="#sacramentos">Sacramentos</a>
-        <a href="#comunidades">Comunidades</a>
-        <a href="#contacto">Contacto</a>
-        <a href="#reconstruccion" class="btn btn-primary">Apoyar Reconstrucción</a>
+        <a href="#inicio" data-i18n="nav_home">Inicio</a>
+        <a href="#horarios" data-i18n="nav_masses_short">Misas</a>
+        <a href="#quienes-somos" data-i18n="nav_about_short">Nosotros</a>
+        <a href="#sacramentos" data-i18n="nav_sacraments">Sacramentos</a>
+        <a href="#comunidades" data-i18n="nav_communities_short">Comunidades</a>
+        <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+        <a href="#reconstruccion" data-i18n="nav_btn_reconstruction" class="btn btn-primary">Apoyar Reconstrucción</a>
       </nav>
       
-      <button id="menu-open" class="mobile-menu-btn" aria-expanded="false" aria-label="Abrir menú">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-      </button>
+      <div class="header-actions">
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="es" aria-label="Cambiar a Español">ES</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en" aria-label="Switch to English">EN</button>
+        </div>
+        
+        <button id="menu-open" class="mobile-menu-btn" data-i18n-aria-label="menu_open_aria" aria-expanded="false" aria-label="Abrir menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -64,37 +79,37 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
       <div class="container">
-        <h1>Parroquia<br>Santo Tomás Apóstol</h1>
-        <p>"Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos." - Mateo 18:20</p>
-        <a href="#reconstruccion" class="btn btn-primary">Conoce Nuestro Proyecto de Reconstrucción</a>
+        <h1 data-i18n-html="hero_title">Parroquia<br>Santo Tomás Apóstol</h1>
+        <p data-i18n="hero_verse">"Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos." - Mateo 18:20</p>
+        <a href="#reconstruccion" data-i18n="hero_btn" class="btn btn-primary">Conoce Nuestro Proyecto de Reconstrucción</a>
       </div>
     </section>
 
     <!-- Próximas Misas -->
     <section id="horarios" class="section container">
       <div class="text-center reveal">
-        <h2>Horario de Misas y Servicios</h2>
-        <p>Te esperamos para celebrar juntos la Eucaristía.</p>
+        <h2 data-i18n="mass_title">Horario de Misas y Servicios</h2>
+        <p data-i18n="mass_subtitle">Te esperamos para celebrar juntos la Eucaristía.</p>
       </div>
       
       <div class="horarios-grid">
         <div class="card reveal">
-          <h3>Santas Misas</h3>
+          <h3 data-i18n="mass_holy_masses">Santas Misas</h3>
           <ul class="horario-list">
-            <li><span>Lunes</span> <strong style="color: var(--color-muted); font-weight: 500;">No hay misa</strong></li>
-            <li><span>Martes a Sábado</span> <strong>7:00 AM y 5:00 PM</strong></li>
-            <li><span>Domingo (Mañana)</span> <strong>7:00 AM, 9:00 AM, 11:00 AM</strong></li>
-            <li><span>Domingo (Tarde/Noche)</span> <strong>4:00 PM y 7:00 PM</strong></li>
+            <li><span data-i18n="mass_lunes">Lunes</span> <strong data-i18n="mass_no_mass" style="color: var(--color-muted); font-weight: 500;">No hay misa</strong></li>
+            <li><span data-i18n="mass_martes_sabado">Martes a Sábado</span> <strong data-i18n="mass_martes_sabado_time">7:00 AM y 5:00 PM</strong></li>
+            <li><span data-i18n="mass_domingo_manana">Domingo (Mañana)</span> <strong data-i18n="mass_domingo_manana_time">7:00 AM, 9:00 AM, 11:00 AM</strong></li>
+            <li><span data-i18n="mass_domingo_tarde">Domingo (Tarde/Noche)</span> <strong data-i18n="mass_domingo_tarde_time">4:00 PM y 7:00 PM</strong></li>
           </ul>
         </div>
         
         <div class="card reveal">
-          <h3>Servicios y Oficina</h3>
+          <h3 data-i18n="mass_services">Servicios y Oficina</h3>
           <ul class="horario-list">
-            <li><span>Confesiones</span> <strong>Sin horario establecido</strong></li>
-            <li><span>Hora Santa</span> <strong>Jueves 8:00 AM - 12:00 PM</strong></li>
-            <li><span>Adoración Nocturna</span> <strong>Jueves 7:00 PM</strong></li>
-            <li><span>Secretaría</span> <strong>Lun. a Vie. 8:00 AM - 12:00 PM / 1:00 PM - 5:00 PM</strong></li>
+            <li><span data-i18n="service_confessions">Confesiones</span> <strong data-i18n="service_no_schedule">Sin horario establecido</strong></li>
+            <li><span data-i18n="service_holy_hour">Hora Santa</span> <strong data-i18n="service_holy_hour_time">Jueves 8:00 AM - 12:00 PM</strong></li>
+            <li><span data-i18n="service_night_adoration">Adoración Nocturna</span> <strong data-i18n="service_night_adoration_time">Jueves 7:00 PM</strong></li>
+            <li><span data-i18n="service_office">Secretaría</span> <strong data-i18n="service_office_time">Lun. a Vie. 8:00 AM - 12:00 PM / 1:00 PM - 5:00 PM</strong></li>
           </ul>
         </div>
       </div>
@@ -103,17 +118,17 @@
     <!-- Quiénes Somos -->
     <section id="quienes-somos" class="section container">
       <div class="text-center reveal">
-        <h2>Nuestra Comunidad</h2>
+        <h2 data-i18n="about_title">Nuestra Comunidad</h2>
       </div>
       
       <div class="quienes-somos-grid">
         <div class="historia reveal">
-          <h3>Historia y Misión</h3>
-          <p>Ubicada en el corazón de Santo Tomás Milpas Altas, nuestra parroquia es el centro espiritual de la comunidad. Guiados por el ejemplo de Santo Tomás Apóstol, buscamos fortalecer nuestra fe mediante la oración, la fraternidad y el servicio al prójimo.</p>
+          <h3 data-i18n="about_history_title">Historia y Misión</h3>
+          <p data-i18n="about_history_p1">Ubicada en el corazón de Santo Tomás Milpas Altas, nuestra parroquia es el centro espiritual de la comunidad. Guiados por el ejemplo de Santo Tomás Apóstol, buscamos fortalecer nuestra fe mediante la oración, la fraternidad y el servicio al prójimo.</p>
           <br>
-          <p>Somos una comunidad viva, llena de tradiciones y compromiso evangelizador, donde todas las familias encuentran su hogar espiritual.</p>
+          <p data-i18n="about_history_p2">Somos una comunidad viva, llena de tradiciones y compromiso evangelizador, donde todas las familias encuentran su hogar espiritual.</p>
           <div class="comunidad-imagen-wrapper" style="margin-top: 2rem;">
-            <img src="img/parroquia/Ambos%20Padres.jpg" alt="Padre Christian y Padre Romeo" style="border-radius: var(--radius-lg); width: 100%; height: auto; box-shadow: var(--shadow-md); object-fit: cover;">
+            <img src="img/parroquia/Ambos%20Padres.jpg" data-i18n-alt="logo_alt_general" alt="Padre Christian y Padre Romeo" style="border-radius: var(--radius-lg); width: 100%; height: auto; box-shadow: var(--shadow-md); object-fit: cover;">
           </div>
         </div>
         
@@ -123,8 +138,8 @@
               <img src="img/parroquia/Padre%20Christian.jpg" alt="Padre Christian González">
             </div>
             <h3>Padre Christian González</h3>
-            <p style="color: var(--color-muted); font-weight: 600;">Párroco</p>
-            <p style="margin-top: 1rem; font-style: italic;">"Bienvenidos a su casa. Oramos juntos por nuestra comunidad."</p>
+            <p data-i18n="priest_christian_role" style="color: var(--color-muted); font-weight: 600;">Párroco</p>
+            <p data-i18n="priest_christian_quote" style="margin-top: 1rem; font-style: italic;">"Bienvenidos a su casa. Oramos juntos por nuestra comunidad."</p>
           </div>
 
           <div class="padre-card reveal" style="margin-top: 2rem;">
@@ -132,8 +147,8 @@
               <img src="img/parroquia/Padre_Romeo%20(Vicario).jpg" alt="Padre Romeo">
             </div>
             <h3>Padre Romeo</h3>
-            <p style="color: var(--color-muted); font-weight: 600;">Vicario Parroquial</p>
-            <p style="margin-top: 1rem; font-style: italic;">"Llamados a servir y a caminar juntos en la fe como comunidad."</p>
+            <p data-i18n="priest_romeo_role" style="color: var(--color-muted); font-weight: 600;">Vicario Parroquial</p>
+            <p data-i18n="priest_romeo_quote" style="margin-top: 1rem; font-style: italic;">"Llamados a servir y a caminar juntos en la fe como comunidad."</p>
           </div>
         </div>
       </div>
@@ -143,30 +158,30 @@
     <section id="reconstruccion" class="section reconstruccion">
       <div class="container">
         <div class="text-center reveal">
-          <h2>Proyecto de Reconstrucción</h2>
-          <p>Techo y Construcción de la Nueva Cúpula</p>
+          <h2 data-i18n="recon_title">Proyecto de Reconstrucción</h2>
+          <p data-i18n="recon_subtitle">Techo y Construcción de la Nueva Cúpula</p>
         </div>
 
         <div class="proyecto-container">
           <!-- Detalles y Donación -->
           <div class="reveal">
-            <p style="font-size: 1.1rem; margin-bottom: 2rem;">Nuestra histórica parroquia necesita tu ayuda. Los trabajos contemplan la reconstrucción del techo dañado y la creación e instalación de una nueva cúpula (de la cual carece actualmente) para embellecer y coronar nuestro templo.</p>
+            <p data-i18n="recon_desc" style="font-size: 1.1rem; margin-bottom: 2rem;">Nuestra histórica parroquia necesita tu ayuda. Los trabajos contemplan la reconstrucción del techo dañado y la creación e instalación de una nueva cúpula (de la cual carece actualmente) para embellecer y coronar nuestro templo.</p>
             
             <!-- Card de Donación -->
             <div class="donacion-card shadow-lg">
               <img src="assets/logos/comite-proconstruccion.PNG" alt="Logo Comité" style="height: 100px; margin: 0 auto 1.5rem; object-fit: contain;">
-              <h3>¿Cómo puedes donar?</h3>
-              <p>Puedes realizar tu aporte mediante transferencia o depósito bancario:</p>
+              <h3 data-i18n="recon_donation_title">¿Cómo puedes donar?</h3>
+              <p data-i18n="recon_donation_desc">Puedes realizar tu aporte mediante transferencia o depósito bancario:</p>
               
               <div class="cuenta-info">
-                <strong>BANRURAL</strong><br>
-                Cuenta Monetaria: <span style="color: var(--color-accent); font-weight: bold;">3710057595</span><br>
-                <span style="font-size: 0.9rem;">Nombre: Comité Proconstrucción Santo Tomás Apóstol</span>
+                <strong data-i18n="recon_bank_name">BANRURAL</strong><br>
+                <span data-i18n-html="recon_bank_account">Cuenta Monetaria: <span style="color: var(--color-accent); font-weight: bold;">3710057595</span></span><br>
+                <span data-i18n="recon_bank_owner" style="font-size: 0.9rem;">Nombre: Comité Proconstrucción Santo Tomás Apóstol</span>
               </div>
               
-              <p style="font-size: 0.9rem; color: var(--color-muted); margin-bottom: 1rem;">Por favor, envía tu boleta o comprobante a nuestro WhatsApp para llevar un registro de tu valiosa ayuda.</p>
+              <p data-i18n="recon_donation_note" style="font-size: 0.9rem; color: var(--color-muted); margin-bottom: 1rem;">Por favor, envía tu boleta o comprobante a nuestro WhatsApp para llevar un registro de tu valiosa ayuda.</p>
               
-              <a href="https://wa.me/50239380017?text=Hola,%20adjunto%20comprobante%20de%20donación%20para%20el%20techo%20de%20la%20parroquia." target="_blank" class="btn btn-primary" style="width: 100%; gap: 10px;">
+              <a href="https://wa.me/50239380017?text=Hola,%20adjunto%20comprobante%20de%20donación%20para%20el%20techo%20de%20la%20parroquia." data-i18n-href="recon_wa_link" target="_blank" class="btn btn-primary" style="width: 100%; gap: 10px;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
                 Enviar Comprobante
               </a>
@@ -176,9 +191,9 @@
           <!-- Galería del Proyecto (Tabbed & Lightbox) -->
           <div class="galeria-proyecto-wrapper reveal" style="transition-delay: 0.2s; width: 100%;">
             <div class="galeria-tabs">
-              <button class="tab-btn active" data-tab="render">Renders (Diseño Final)</button>
-              <button class="tab-btn" data-tab="avance">Trabajos Actuales</button>
-              <button class="tab-btn" data-tab="danos">Daños Estructurales</button>
+              <button class="tab-btn active" data-tab="render" data-i18n="tab_render">Renders (Diseño Final)</button>
+              <button class="tab-btn" data-tab="avance" data-i18n="tab_progress">Trabajos Actuales</button>
+              <button class="tab-btn" data-tab="danos" data-i18n="tab_damage">Daños Estructurales</button>
             </div>
             
             <div class="galeria-content">
@@ -186,32 +201,32 @@
               <div class="tab-pane active" id="tab-render">
                 <div class="galeria-grid">
                   <div class="galeria-item">
-                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.42.jpeg" alt="Render Fachada Principal">
-                    <div class="galeria-caption">Fachada Principal (Diseño Final)</div>
+                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.42.jpeg" data-i18n-alt="caption_facade" alt="Render Fachada Principal">
+                    <div class="galeria-caption" data-i18n="caption_facade">Fachada Principal (Diseño Final)</div>
                   </div>
                   <div class="galeria-item">
-                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.41.jpeg" alt="Render Interior">
-                    <div class="galeria-caption">Diseño Interior</div>
+                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.41.jpeg" data-i18n-alt="caption_interior" alt="Render Interior">
+                    <div class="galeria-caption" data-i18n="caption_interior">Diseño Interior</div>
                   </div>
                   <div class="galeria-item">
-                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.41%20(1).jpeg" alt="Render Cúpula">
-                    <div class="galeria-caption">Detalle de la Cúpula</div>
+                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.41%20(1).jpeg" data-i18n-alt="caption_dome" alt="Render Cúpula">
+                    <div class="galeria-caption" data-i18n="caption_dome">Detalle de la Cúpula</div>
                   </div>
                   <div class="galeria-item">
-                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.41%20(2).jpeg" alt="Render Nave Central">
-                    <div class="galeria-caption">Nave Central</div>
+                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.41%20(2).jpeg" data-i18n-alt="caption_nave" alt="Render Nave Central">
+                    <div class="galeria-caption" data-i18n="caption_nave">Nave Central</div>
                   </div>
                   <div class="galeria-item">
-                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.42%20(1).jpeg" alt="Render Perspectiva Lateral">
-                    <div class="galeria-caption">Perspectiva Lateral</div>
+                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.42%20(1).jpeg" data-i18n-alt="caption_side" alt="Render Perspectiva Lateral">
+                    <div class="galeria-caption" data-i18n="caption_side">Perspectiva Lateral</div>
                   </div>
                   <div class="galeria-item">
-                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.42%20(2).jpeg" alt="Render Entrada Principal">
-                    <div class="galeria-caption">Entrada Principal</div>
+                    <img src="img/proyecto/render/WhatsApp%20Image%202026-05-27%20at%2012.32.42%20(2).jpeg" data-i18n-alt="caption_entrance" alt="Render Entrada Principal">
+                    <div class="galeria-caption" data-i18n="caption_entrance">Entrada Principal</div>
                   </div>
                   <div class="galeria-item">
-                    <img src="img/proyecto/render/Copia%20de%20WhatsApp%20Image%202026-05-27%20at%2012.32.41.jpeg" alt="Render Detalle Techo">
-                    <div class="galeria-caption">Detalle Techo y Estructura</div>
+                    <img src="img/proyecto/render/Copia%20de%20WhatsApp%20Image%202026-05-27%20at%2012.32.41.jpeg" data-i18n-alt="caption_roof" alt="Render Detalle Techo">
+                    <div class="galeria-caption" data-i18n="caption_roof">Detalle Techo y Estructura</div>
                   </div>
                 </div>
               </div>
@@ -220,24 +235,20 @@
               <div class="tab-pane" id="tab-avance">
                 <div class="galeria-grid">
                   <div class="galeria-item">
-                    <img src="img/proyecto/repair.png" alt="Trabajo en Andamios">
-                    <div class="galeria-caption">Inicio de la Reparación Estructural</div>
+                    <img src="img/proyecto/Avance/701296678_1397239702436008_6937179148047601371_n.jpg" data-i18n-alt="caption_removal" alt="Remoción de Materiales">
+                    <div class="galeria-caption" data-i18n="caption_removal">Fase de Desmantelamiento y Limpieza</div>
                   </div>
                   <div class="galeria-item">
-                    <img src="img/proyecto/Avance/701296678_1397239702436008_6937179148047601371_n.jpg" alt="Remoción de Materiales">
-                    <div class="galeria-caption">Fase de Desmantelamiento y Limpieza</div>
+                    <img src="img/proyecto/Avance/701664391_1397239602436018_6465370524821493371_n.jpg" data-i18n-alt="caption_supports" alt="Instalaciones de Soporte">
+                    <div class="galeria-caption" data-i18n="caption_supports">Estructuras de Soporte Temporal</div>
                   </div>
                   <div class="galeria-item">
-                    <img src="img/proyecto/Avance/701664391_1397239602436018_6465370524821493371_n.jpg" alt="Instalaciones de Soporte">
-                    <div class="galeria-caption">Estructuras de Soporte Temporal</div>
+                    <img src="img/proyecto/Avance/702260234_1397239682436010_8610254623808752050_n.jpg" data-i18n-alt="caption_reinforcement" alt="Refuerzo del Techo">
+                    <div class="galeria-caption" data-i18n="caption_reinforcement">Reforzamiento de Vigas Principales</div>
                   </div>
                   <div class="galeria-item">
-                    <img src="img/proyecto/Avance/702260234_1397239682436010_8610254623808752050_n.jpg" alt="Refuerzo del Techo">
-                    <div class="galeria-caption">Reforzamiento de Vigas Principales</div>
-                  </div>
-                  <div class="galeria-item">
-                    <img src="img/proyecto/Avance/702394117_1397239435769368_3095464503356072306_n.jpg" alt="Avance de Obra">
-                    <div class="galeria-caption">Colocación de la Nueva Cubierta</div>
+                    <img src="img/proyecto/Avance/702394117_1397239435769368_3095464503356072306_n.jpg" data-i18n-alt="caption_new_roof" alt="Avance de Obra">
+                    <div class="galeria-caption" data-i18n="caption_new_roof">Colocación de la Nueva Cubierta</div>
                   </div>
                 </div>
               </div>
@@ -246,13 +257,26 @@
               <div class="tab-pane" id="tab-danos">
                 <div class="galeria-grid">
                   <div class="galeria-item">
-                    <img src="img/proyecto/damage.png" alt="Daños en el Techo">
-                    <div class="galeria-caption">Deterioro por Filtración y Humedad en Madera</div>
+                    <img src="img/proyecto/Daños/IMG_4404.jpg" data-i18n-alt="caption_damage_beam" alt="Daño Estructural en Vigas del Techo">
+                    <div class="galeria-caption" data-i18n="caption_damage_beam">Daño Estructural en Vigas del Techo</div>
+                  </div>
+                  <div class="galeria-item">
+                    <img src="img/proyecto/Daños/IMG_4412.jpg" data-i18n-alt="caption_damage_water" alt="Deterioro por Filtración de Agua">
+                    <div class="galeria-caption" data-i18n="caption_damage_water">Deterioro por Filtración de Agua</div>
+                  </div>
+                  <div class="galeria-item">
+                    <video src="img/proyecto/Daños/IMG_4586.mp4" preload="metadata"></video>
+                    <div class="video-overlay">
+                      <div class="play-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                      </div>
+                    </div>
+                    <div class="galeria-caption" data-i18n="caption_damage_video">Video del Estado del Techo</div>
                   </div>
                 </div>
               </div>
             </div>
-            <p style="text-align: center; font-size: 0.95rem; margin-top: 1.5rem; opacity: 0.9; color: var(--color-gold); font-weight: 500;">(Haz clic en cualquier imagen para ampliarla)</p>
+            <p data-i18n="gallery_hint" style="text-align: center; font-size: 0.95rem; margin-top: 1.5rem; opacity: 0.9; color: var(--color-gold); font-weight: 500;">(Haz clic en cualquier imagen para ampliarla)</p>
           </div>
         </div>
       </div>
@@ -261,46 +285,46 @@
     <!-- Sacramentos -->
     <section id="sacramentos" class="section container">
       <div class="text-center reveal">
-        <h2>Sacramentos</h2>
-        <p>Acompañamos tu crecimiento espiritual en cada etapa.</p>
+        <h2 data-i18n="sacra_title">Sacramentos</h2>
+        <p data-i18n="sacra_subtitle">Acompañamos tu crecimiento espiritual en cada etapa.</p>
       </div>
       
       <div class="sacramentos-grid">
         <div class="sacramento-card reveal">
           <div class="sacramento-icon">💧</div>
-          <h3>Bautismo</h3>
-          <p style="font-size: 0.9rem; color: var(--color-muted);">Iniciación a la fe cristiana para niños y adultos.</p>
+          <h3 data-i18n="sacra_baptism">Bautismo</h3>
+          <p data-i18n="sacra_baptism_desc" style="font-size: 0.9rem; color: var(--color-muted);">Iniciación a la fe cristiana para niños y adultos.</p>
         </div>
         <div class="sacramento-card reveal" style="transition-delay: 0.1s;">
           <div class="sacramento-icon">🕊️</div>
-          <h3>Primera Comunión</h3>
-          <p style="font-size: 0.9rem; color: var(--color-muted);">Preparación y catequesis para recibir a Jesús.</p>
+          <h3 data-i18n="sacra_communion">Primera Comunión</h3>
+          <p data-i18n="sacra_communion_desc" style="font-size: 0.9rem; color: var(--color-muted);">Preparación y catequesis para recibir a Jesús.</p>
         </div>
         <div class="sacramento-card reveal" style="transition-delay: 0.2s;">
           <div class="sacramento-icon">🔥</div>
-          <h3>Confirmación</h3>
-          <p style="font-size: 0.9rem; color: var(--color-muted);">Fortalecimiento del Espíritu Santo en los jóvenes.</p>
+          <h3 data-i18n="sacra_confirm">Confirmación</h3>
+          <p data-i18n="sacra_confirm_desc" style="font-size: 0.9rem; color: var(--color-muted);">Fortalecimiento del Espíritu Santo en los jóvenes.</p>
         </div>
         <div class="sacramento-card reveal" style="transition-delay: 0.3s;">
           <div class="sacramento-icon">💍</div>
-          <h3>Matrimonio</h3>
-          <p style="font-size: 0.9rem; color: var(--color-muted);">Unión sagrada. Contacta con secretaría para requisitos.</p>
+          <h3 data-i18n="sacra_marriage">Matrimonio</h3>
+          <p data-i18n="sacra_marriage_desc" style="font-size: 0.9rem; color: var(--color-muted);">Unión sagrada. Contacta con secretaría para requisitos.</p>
         </div>
       </div>
 
       <!-- Acordeón de Requisitos -->
       <div class="requisitos-sacramentos reveal">
-        <h3 class="text-center" style="margin-top: 4rem; margin-bottom: 2rem; font-family: var(--font-serif); font-size: 1.8rem;">Requisitos para Sacramentos</h3>
+        <h3 class="text-center" data-i18n="sacra_req_title" style="margin-top: 4rem; margin-bottom: 2rem; font-family: var(--font-serif); font-size: 1.8rem;">Requisitos para Sacramentos</h3>
         
         <div class="accordion">
           <!-- Bautismo -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
-              <span>💧 Bautismo (Niños de 0 a 7 años)</span>
+              <span data-i18n="req_header_baptism">💧 Bautismo (Niños de 0 a 7 años)</span>
               <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-content">
-              <div class="accordion-inner">
+              <div class="accordion-inner" data-i18n-html="req_content_baptism">
                 <p><strong>Papelería del niño(a) y de los padres:</strong></p>
                 <ul>
                   <li>Certificado de nacimiento original del niño(a) a bautizar, emitido recientemente por el RENAP.</li>
@@ -315,7 +339,7 @@
                 </ul>
                 <p style="margin-top: 1rem;"><strong>Requisitos para los Padrinos:</strong></p>
                 <ul>
-                  <li><strong>Si son casados:</strong> Constancia original y reciente de matrimonio religioso.</li>
+                  <li><strong>Si son casados:</strong> Constancia original and reciente de matrimonio religioso.</li>
                   <li><strong>Si es soltero(a):</strong> Constancia de soltería emitida por RENAP (reciente y original), constancia original y reciente de Confirmación, y fotocopia de su DPI.</li>
                   <li><strong>Restricción importante:</strong> Por disposición eclesiástica, los abuelos de los niños no pueden actuar como padrinos de bautismo.</li>
                 </ul>
@@ -326,11 +350,11 @@
           <!-- Primera Comunión -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
-              <span>🕊️ Primera Comunión</span>
+              <span data-i18n="req_header_communion">🕊️ Primera Comunión</span>
               <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-content">
-              <div class="accordion-inner">
+              <div class="accordion-inner" data-i18n-html="req_content_communion">
                 <p><strong>Requisitos para la inscripción de los niños:</strong></p>
                 <ul>
                   <li>Haber cumplido <strong>8 años de edad</strong> al momento de la inscripción.</li>
@@ -348,11 +372,11 @@
           <!-- Confirmación -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
-              <span>🔥 Confirmación</span>
+              <span data-i18n="req_header_confirm">🔥 Confirmación</span>
               <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-content">
-              <div class="accordion-inner">
+              <div class="accordion-inner" data-i18n-html="req_content_confirm">
                 <p><strong>Requisitos para los jóvenes contrayentes del sacramento:</strong></p>
                 <ul>
                   <li>Haber cumplido <strong>14 años de edad</strong> al momento del sacramento.</li>
@@ -374,11 +398,11 @@
           <!-- Matrimonio -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
-              <span>💍 Matrimonio (Boda o Traslado Matrimonial)</span>
+              <span data-i18n="req_header_marriage">💍 Matrimonio (Boda o Traslado Matrimonial)</span>
               <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-content">
-              <div class="accordion-inner">
+              <div class="accordion-inner" data-i18n-html="req_content_marriage">
                 <p><strong>Papelería requerida para el Expediente (presentar con 2 meses de anticipación):</strong></p>
                 <ul>
                   <li>Constancia de bautismo y de confirmación original y reciente de ambos contrayentes. (Si a alguno le hace falta algún sacramento, informar con anticipación al párroco o en oficina).</li>
@@ -411,56 +435,56 @@
     <!-- Grupos y Comunidades -->
     <section id="comunidades" class="section container">
       <div class="text-center reveal">
-        <h2>Grupos y Comunidades</h2>
-        <p>Participa activamente en la vida pastoral y comunitaria de nuestra parroquia.</p>
+        <h2 data-i18n="commu_title">Grupos y Comunidades</h2>
+        <p data-i18n="commu_subtitle">Participa activamente en la vida pastoral y comunitaria de nuestra parroquia.</p>
       </div>
       
       <div class="comunidades-grid">
         <!-- Grupo Luz Eterna -->
         <div class="comunidad-card reveal">
           <div class="comunidad-icon">🕯️</div>
-          <h3>Grupo de Oración Católico Luz Eterna</h3>
-          <p class="comunidad-descripcion">Espacio dedicado a la oración profunda, la alabanza y la reflexión comunitaria para avivar la llama de la fe en el Espíritu Santo.</p>
+          <h3 data-i18n="group_luz_title">Grupo de Oración Católico Luz Eterna</h3>
+          <p class="comunidad-descripcion" data-i18n="group_luz_desc">Espacio dedicado a la oración profunda, la alabanza y la reflexión comunitaria para avivar la llama de la fe en el Espíritu Santo.</p>
           <div class="comunidad-meta">
-            <span>📅 <strong>Viernes</strong></span>
+            <span>📅 <strong data-i18n="meta_friday">Viernes</strong></span>
             <span>⏰ <strong>7:15 PM</strong></span>
-            <span>📍 <strong>Salón Parroquial</strong></span>
+            <span>📍 <strong data-i18n="meta_hall">Salón Parroquial</strong></span>
           </div>
         </div>
 
         <!-- Cursillos de Cristiandad -->
         <div class="comunidad-card reveal" style="transition-delay: 0.1s;">
           <div class="comunidad-icon">⛵</div>
-          <h3>Cursillos de Cristiandad</h3>
-          <p class="comunidad-descripcion">Movimiento eclesial enfocado en posibilitar la vivencia y la convivencia de lo fundamental cristiano en la vida cotidiana.</p>
+          <h3 data-i18n="group_cursillos_title">Cursillos de Cristiandad</h3>
+          <p class="comunidad-descripcion" data-i18n="group_cursillos_desc">Movimiento eclesial enfocado en posibilitar la vivencia y la convivencia de lo fundamental cristiano en la vida cotidiana.</p>
           <div class="comunidad-meta">
-            <span>📅 <strong>Miércoles</strong></span>
+            <span>📅 <strong data-i18n="meta_wednesday">Miércoles</strong></span>
             <span>⏰ <strong>7:00 PM</strong></span>
-            <span>📍 <strong>Salón Parroquial</strong></span>
+            <span>📍 <strong data-i18n="meta_hall">Salón Parroquial</strong></span>
           </div>
         </div>
 
         <!-- Somos Uno en Jesús -->
         <div class="comunidad-card reveal" style="transition-delay: 0.2s;">
           <div class="comunidad-icon">🤝</div>
-          <h3>Grupo Parroquial "Somos uno en Jesús"</h3>
-          <p class="comunidad-descripcion">Comunidad de hermanos unidos para compartir, crecer espiritualmente, formarse y servir al prójimo en fraternidad.</p>
+          <h3 data-i18n="group_somos_title">Grupo Parroquial "Somos uno en Jesús"</h3>
+          <p class="comunidad-descripcion" data-i18n="group_somos_desc">Comunidad de hermanos unidos para compartir, crecer espiritualmente, formarse y servir al prójimo en fraternidad.</p>
           <div class="comunidad-meta">
-            <span>📅 <strong>Sábados</strong></span>
+            <span>📅 <strong data-i18n="meta_saturday">Sábados</strong></span>
             <span>⏰ <strong>7:00 PM</strong></span>
-            <span>📍 <strong>Salón Parroquial</strong></span>
+            <span>📍 <strong data-i18n="meta_hall">Salón Parroquial</strong></span>
           </div>
         </div>
 
         <!-- Ministerio de Lectores -->
         <div class="comunidad-card reveal" style="transition-delay: 0.3s;">
           <div class="comunidad-icon">📖</div>
-          <h3>Ministerio de Lectores</h3>
-          <p class="comunidad-descripcion">Servicio litúrgico encargado de proclamar la Palabra de Dios con reverencia y claridad en la Eucaristía.</p>
+          <h3 data-i18n="group_lectores_title">Ministerio de Lectores</h3>
+          <p class="comunidad-descripcion" data-i18n="group_lectores_desc">Servicio litúrgico encargado de proclamar la Palabra de Dios con reverencia y claridad en la Eucaristía.</p>
           <div class="comunidad-meta">
-            <span>📅 <strong>Lunes</strong></span>
+            <span>📅 <strong data-i18n="meta_monday">Lunes</strong></span>
             <span>⏰ <strong>7:00 PM</strong></span>
-            <span>📍 <strong>Salón Parroquial</strong></span>
+            <span>📍 <strong data-i18n="meta_hall">Salón Parroquial</strong></span>
           </div>
         </div>
       </div>
@@ -469,19 +493,19 @@
     <!-- Contacto -->
     <section id="contacto" class="section container" style="background-color: var(--color-surface); padding: 4rem 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin-bottom: 5rem;">
       <div class="text-center reveal">
-        <h2>Contacto y Ubicación</h2>
+        <h2 data-i18n="contact_title">Contacto y Ubicación</h2>
       </div>
       
       <div class="contacto-grid">
         <div class="contacto-info reveal">
           <p>📍 <a href="https://maps.app.goo.gl/MxeG76NpurxUS6pS6" target="_blank" rel="noopener" style="color: var(--color-accent); font-weight: 500; text-decoration: underline;">Santo Tomás Milpas Altas, Sacatepéquez, Guatemala.</a></p>
-          <p>📞 Secretaría: +502 1234 5678</p>
-          <p>💬 WhatsApp (Donaciones): +502 3938 0017</p>
+          <p data-i18n="contact_tel">📞 Secretaría: +502 1234 5678</p>
+          <p data-i18n="contact_whatsapp">💬 WhatsApp (Donaciones): +502 3938 0017</p>
           <br>
-          <a href="https://maps.app.goo.gl/MxeG76NpurxUS6pS6" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; gap: 8px;">
+          <a href="https://maps.app.goo.gl/MxeG76NpurxUS6pS6" data-i18n="contact_directions" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; gap: 8px;">
             📍 Cómo llegar (Google Maps)
           </a>
-          <a href="https://www.facebook.com/profile.php?id=100064499750311" target="_blank" class="btn btn-outline" style="width: 100%; margin-top: 1rem; border-color: #1877F2; color: #1877F2;">
+          <a href="https://www.facebook.com/profile.php?id=100064499750311" data-i18n="contact_facebook" target="_blank" class="btn btn-outline" style="width: 100%; margin-top: 1rem; border-color: #1877F2; color: #1877F2;">
             Visítanos en Facebook
           </a>
         </div>
@@ -500,43 +524,44 @@
       <div class="footer-grid">
         <div>
           <a href="#inicio" class="footer-logo">
-            <img src="assets/logos/IMG_8029.PNG" alt="Logo Parroquia Blanco">
+            <img src="assets/logos/IMG_8029.PNG" data-i18n-alt="logo_alt_white" alt="Logo Parroquia Blanco">
           </a>
-          <p style="color: #aaa; margin-top: 1rem; font-size: 0.9rem;">
+          <p data-i18n="footer_desc" style="color: #aaa; margin-top: 1rem; font-size: 0.9rem;">
             Una comunidad viva guiada por Santo Tomás Apóstol.
           </p>
         </div>
         
         <div class="footer-links">
-          <h4 style="color: white;">Enlaces</h4>
+          <h4 data-i18n="footer_links_title" style="color: white;">Enlaces</h4>
           <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#reconstruccion">Proyecto Reconstrucción</a></li>
-            <li><a href="#horarios">Horarios</a></li>
-            <li><a href="#comunidades">Comunidades</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
+            <li><a href="#reconstruccion" data-i18n="nav_reconstruction">Proyecto Reconstrucción</a></li>
+            <li><a href="#horarios" data-i18n="nav_masses">Horarios</a></li>
+            <li><a href="#comunidades" data-i18n="nav_communities_short">Comunidades</a></li>
+            <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
           </ul>
         </div>
         
         <div class="footer-links">
-          <h4 style="color: white;">Síguenos</h4>
+          <h4 data-i18n="footer_follow_title" style="color: white;">Síguenos</h4>
           <ul>
-            <li><a href="https://www.facebook.com/profile.php?id=100064499750311" target="_blank">Facebook Parroquia</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100064499750311" data-i18n="footer_facebook_link" target="_blank">Facebook Parroquia</a></li>
           </ul>
         </div>
       </div>
       
-      <div class="footer-bottom">
+      <div class="footer-bottom" data-i18n-html="footer_copy">
         &copy; 2026 Parroquia Santo Tomás Apóstol. Todos los derechos reservados.
       </div>
     </div>
   </footer>
 
   <!-- WhatsApp Flotante -->
-  <a href="https://wa.me/50239380017" target="_blank" class="whatsapp-float" aria-label="Chat por WhatsApp">
+  <a href="https://wa.me/50239380017" data-i18n-aria-label="whatsapp_float" target="_blank" class="whatsapp-float" aria-label="Chat por WhatsApp">
     <svg width="35" height="35" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
   </a>
 
+  <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
