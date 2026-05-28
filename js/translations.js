@@ -201,7 +201,7 @@ window.translations = {
     
     // Contacto
     contact_title: "Contacto y Ubicación",
-    contact_tel: "📞 Secretaría: +502 1234 5678",
+    contact_tel: "📞 Secretaría: +502 3938 0017",
     contact_whatsapp: "💬 WhatsApp (Donaciones): +502 3938 0017",
     contact_directions: "📍 Cómo llegar (Google Maps)",
     contact_facebook: "Visítanos en Facebook",
@@ -424,7 +424,7 @@ window.translations = {
     
     // Contact
     contact_title: "Contact and Location",
-    contact_tel: "📞 Parish Office: +502 1234 5678",
+    contact_tel: "📞 Parish Office: +502 3938 0017",
     contact_whatsapp: "💬 WhatsApp (Donations): +502 3938 0017",
     contact_directions: "📍 How to get there (Google Maps)",
     contact_facebook: "Visit us on Facebook",
