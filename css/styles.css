@@ -133,11 +133,12 @@ header.nav-hidden {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 95px;
+  height: 88px;
+  max-width: 1400px;
 }
 
 .logo img {
-  height: 75px;
+  height: 68px;
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -148,7 +149,7 @@ header.nav-hidden {
 
 .desktop-nav {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.25rem;
   align-items: center;
 }
 
@@ -943,7 +944,7 @@ footer {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .lang-selector {
@@ -1002,7 +1003,7 @@ footer {
 }
 
 /* Evitar que el menú de escritorio se vea apretado en laptops y pantallas medianas */
-@media (max-width: 1150px) and (min-width: 901px) {
+@media (max-width: 1250px) and (min-width: 901px) {
   .nav-container {
     height: 80px;
   }
