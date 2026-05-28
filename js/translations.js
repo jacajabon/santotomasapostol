@@ -277,7 +277,7 @@ window.translations = {
     about_history_p2: "We are a living community, rich in traditions and evangelizing commitment, where all families find their spiritual home.",
     
     // Priests
-    priest_christian_role: "Pastor",
+    priest_christian_role: "Parish Priest",
     priest_christian_quote: '"Welcome to your home. We pray together for our community."',
     priest_romeo_role: "Parochial Vicar",
     priest_romeo_quote: '"Called to serve and walk together in faith as a community."',

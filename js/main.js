@@ -15,50 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
   /* --- Mobile Drawer (Navegación Móvil) --- */
   const openBtn = document.getElementById('menu-open');
   const drawer = document.getElementById('mobile-drawer');
-  const scroller = drawer.querySelector('.drawer-scroller');
   const sheet = drawer.querySelector('.drawer-sheet');
 
-  async function openDrawer() {
+  function openDrawer() {
     drawer.showPopover();
-    
-    // Fallback para navegadores sin scroll-initial-target
-    if (!CSS.supports('scroll-initial-target', 'nearest')) {
-      scroller.scrollTo({left: scroller.offsetWidth, behavior: 'instant'});
-      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-    }
-    
-    scroller.scrollTo({left: 0, behavior: 'auto'});
-  }
-
-  function closeDrawer() {
-    scroller.scrollTo({left: scroller.offsetWidth, behavior: 'auto'});
-  }
-
-  function onDrawerOpened() {
+    drawer.offsetHeight; // Forzar reflow para que corra la transición
+    drawer.classList.add('open');
     document.querySelector('main').inert = true;
     openBtn.setAttribute('aria-expanded', 'true');
     sheet.focus();
   }
 
-  function onDrawerClosed() {
-    drawer.hidePopover();
+  function closeDrawer() {
+    drawer.classList.remove('open');
     document.querySelector('main').inert = false;
     openBtn.setAttribute('aria-expanded', 'false');
+    setTimeout(() => {
+      if (!drawer.classList.contains('open')) {
+        drawer.hidePopover();
+      }
+    }, 300); // Duración de la transición CSS
   }
-
-  const visibleThreshold = 1 / window.innerWidth;
-  const observer = new IntersectionObserver((entries) => {
-    const entry = entries.at(-1);
-    if (entry.intersectionRatio < visibleThreshold) onDrawerClosed();
-    if (entry.intersectionRatio === 1) onDrawerOpened();
-  }, {root: drawer, threshold: [visibleThreshold, 1]});
-  
-  observer.observe(sheet);
 
   openBtn.addEventListener('click', openDrawer);
   
   drawer.addEventListener('click', (e) => {
-    if (!sheet.contains(e.target)) closeDrawer();
+    if (e.target === drawer) closeDrawer();
   });
 
   document.addEventListener('keydown', (e) => {

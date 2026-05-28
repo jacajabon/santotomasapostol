@@ -148,7 +148,7 @@ header.nav-hidden {
 
 .desktop-nav {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -175,68 +175,57 @@ header.nav-hidden {
   .mobile-menu-btn { display: block; }
 }
 
-/* Navigation Drawer (Mobile) usando Popover API y Scroll Snap */
-@property --drawer-backdrop {
-  syntax: '<number>';
-  inherits: true;
-  initial-value: 0;
-}
-
+/* Navigation Drawer (Mobile) usando Popover API y transiciones CSS */
 #mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
   margin: 0;
   padding: 0;
   border: none;
-  background: transparent;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100%;
-  max-height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s ease;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+#mobile-drawer:not(:popover-open) {
+  display: none;
+}
+
+#mobile-drawer:popover-open {
+  display: flex;
 }
 
 #mobile-drawer::backdrop {
-  background: rgba(0, 0, 0, calc(0.5 * var(--drawer-backdrop)));
+  background: transparent;
 }
 
-.drawer-scroller {
-  width: 100%;
-  height: 100%;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  display: flex;
+#mobile-drawer.open {
+  background-color: rgba(0, 0, 0, 0.4);
 }
-.drawer-scroller::-webkit-scrollbar { display: none; }
 
 .drawer-sheet {
-  width: 80vw;
+  width: 85vw;
   max-width: 300px;
   height: 100%;
   background-color: var(--color-surface);
-  scroll-snap-align: start;
-  flex-shrink: 0;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   box-shadow: var(--shadow-lg);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
 }
 
-.drawer-spacer {
-  width: 100%;
-  height: 100%;
-  scroll-snap-align: start;
-  flex-shrink: 0;
-}
-
-@supports (animation-timeline: scroll()) {
-  @keyframes drawerBackdropFade {
-    0% { --drawer-backdrop: 1; }
-    100% { --drawer-backdrop: 0; }
-  }
-  .drawer-scroller {
-    animation: drawerBackdropFade linear;
-    animation-timeline: scroll(self inline);
-  }
+#mobile-drawer.open .drawer-sheet {
+  transform: translateX(0);
 }
 
 .drawer-sheet a {
@@ -1010,6 +999,29 @@ footer {
 .drawer-lang-selector .lang-btn.active {
   background-color: var(--color-gold);
   color: var(--color-primary);
+}
+
+/* Evitar que el menú de escritorio se vea apretado en laptops y pantallas medianas */
+@media (max-width: 1150px) and (min-width: 901px) {
+  .nav-container {
+    height: 80px;
+  }
+  .logo img {
+    height: 60px;
+  }
+  .desktop-nav {
+    gap: 1rem;
+  }
+  .desktop-nav a {
+    font-size: 0.9rem;
+  }
+  .desktop-nav .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  .header-actions {
+    gap: 1rem;
+  }
 }
 
 @media (max-width: 900px) {
