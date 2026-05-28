@@ -226,51 +226,70 @@ document.addEventListener('DOMContentLoaded', () => {
   function translatePage(lang) {
     if (!window.translations) return;
 
+    // Función de obtención segura de traducción para evitar inyección de propiedades y prototype pollution
+    function getSafeTranslation(langKey, propKey) {
+      if (!window.translations) return null;
+      if (typeof langKey !== 'string' || ['__proto__', 'constructor', 'prototype'].includes(langKey)) return null;
+      const langDesc = Object.getOwnPropertyDescriptor(window.translations, langKey);
+      if (!langDesc || !langDesc.value) return null;
+      
+      const langObj = langDesc.value;
+      if (typeof propKey !== 'string' || ['__proto__', 'constructor', 'prototype'].includes(propKey)) return null;
+      const propDesc = Object.getOwnPropertyDescriptor(langObj, propKey);
+      return propDesc ? propDesc.value : null;
+    }
+
     // 1. Traducir textos simples
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (window.translations[lang] && window.translations[lang][key]) {
-        el.textContent = window.translations[lang][key];
+      const val = getSafeTranslation(lang, key);
+      if (val !== null && val !== undefined) {
+        el.textContent = val;
       }
     });
 
     // 2. Traducir bloques de HTML
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const key = el.getAttribute('data-i18n-html');
-      if (window.translations[lang] && window.translations[lang][key]) {
-        el.innerHTML = window.translations[lang][key];
+      const val = getSafeTranslation(lang, key);
+      if (val !== null && val !== undefined) {
+        el.innerHTML = val;
       }
     });
 
     // 3. Traducir atributos alt
     document.querySelectorAll('[data-i18n-alt]').forEach(el => {
       const key = el.getAttribute('data-i18n-alt');
-      if (window.translations[lang] && window.translations[lang][key]) {
-        el.setAttribute('alt', window.translations[lang][key]);
+      const val = getSafeTranslation(lang, key);
+      if (val !== null && val !== undefined) {
+        el.setAttribute('alt', val);
       }
     });
 
     // 4. Traducir atributos aria-label
     document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
       const key = el.getAttribute('data-i18n-aria-label');
-      if (window.translations[lang] && window.translations[lang][key]) {
-        el.setAttribute('aria-label', window.translations[lang][key]);
+      const val = getSafeTranslation(lang, key);
+      if (val !== null && val !== undefined) {
+        el.setAttribute('aria-label', val);
       }
     });
 
     // 5. Traducir atributos href (ej. enlace de WhatsApp)
     document.querySelectorAll('[data-i18n-href]').forEach(el => {
       const key = el.getAttribute('data-i18n-href');
-      if (window.translations[lang] && window.translations[lang][key]) {
-        el.setAttribute('href', window.translations[lang][key]);
+      const val = getSafeTranslation(lang, key);
+      if (val !== null && val !== undefined) {
+        el.setAttribute('href', val);
       }
     });
 
     // 6. Traducir atributos content (ej. meta de descripción)
     document.querySelectorAll('[data-i18n-content]').forEach(el => {
       const key = el.getAttribute('data-i18n-content');
-      if (window.translations[lang] && window.translations[lang][key]) {
-        el.setAttribute('content', window.translations[lang][key]);
+      const val = getSafeTranslation(lang, key);
+      if (val !== null && val !== undefined) {
+        el.setAttribute('content', val);
       }
     });
 
