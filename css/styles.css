@@ -1016,7 +1016,7 @@ footer {
   .desktop-nav a {
     font-size: 0.9rem;
   }
-  .desktop-nav .btn {
+  .nav-btn-reconstruct {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
   }
@@ -1030,6 +1030,9 @@ footer {
     margin-left: auto;
     margin-right: 0.75rem;
     gap: 1rem;
+  }
+  .nav-btn-reconstruct {
+    display: none;
   }
 }
 
